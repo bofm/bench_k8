@@ -6,6 +6,8 @@ NAMESPACE=default
 
 build:
 	docker build -t ${RELEASE_NAME} .
+	cd storage && make build
+	cd storage/slave && make build
 
 helm.check:
 	helm template -f ${HELM_DIR}/values.local.yaml ${HELM_DIR}
